@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf(),
+);
+const base = import.meta.env.BASE_URL;
+
+// 연락처: 공개해도 되는 값으로 바꿔 넣으세요
+const GITHUB_URL = 'https://github.com/JaeFree';
+const EMAIL = ''; // 예: 'me@example.com' (비워 두면 표시하지 않음)
+
+const skills = [
+  { group: '언어', items: ['Python', 'C++ (Arduino)'] },
+  { group: '비전 · AI', items: ['OpenCV', 'MediaPipe', 'YOLOv8', 'face_recognition'] },
+  { group: '하드웨어', items: ['Arduino Uno / Mega', 'Raspberry Pi', '서보모터', 'DHT11 · MQ135 · PIR 센서'] },
+  { group: '통신 · IoT', items: ['UART 시리얼', 'Bluetooth (HC-06, RFCOMM)', 'ThingsBoard'] },
+];
+---
+<Base title="김재표 | 포트폴리오">
+  <section class="py-16 sm:py-24">
+    <p class="text-sm font-semibold text-blue-600">Portfolio</p>
+    <h1 class="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">비전과 하드웨어를 잇는 개발자, 김재표</h1>
+    <p class="mt-4 max-w-2xl text-slate-600">
+      카메라로 보고 판단한 결과를 Arduino와 센서로 직접 움직이게 만드는 프로젝트를 해 왔습니다.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="#projects" class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700">프로젝트 보기</a>
+      <a href={GITHUB_URL} class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium hover:bg-slate-100">GitHub</a>
+    </div>
+  </section>
+
+  <section id="about" class="scroll-mt-20 py-10">
+    <h2 class="text-2xl font-bold text-slate-900">소개</h2>
+    <!-- 자기소개 3~4문장으로 바꿔 쓰세요 -->
+    <p class="mt-4 max-w-2xl leading-relaxed text-slate-700">
+      컴퓨터 비전(Python)과 임베디드(Arduino)를 연결해 실제로 동작하는 시스템을 만드는 것을 좋아합니다.
+      팀 프로젝트에서는 주로 Arduino 제어 로직과 하드웨어 제작을 맡았고, MediaPipe 손 인식과 라즈베리파이 데이터 수집도 개발했습니다.
+      지금은 코딩과 CS 기본기를 다지며 공부하는 습관을 만들고 있습니다.
+    </p>
+  </section>
+
+  <section id="skills" class="scroll-mt-20 py-10">
+    <h2 class="text-2xl font-bold text-slate-900">기술</h2>
+    <dl class="mt-4 grid gap-4 sm:grid-cols-2">
+      {skills.map((s) => (
+        <div class="rounded-xl border border-slate-200 bg-white p-4">
+          <dt class="text-sm font-semibold text-slate-500">{s.group}</dt>
+          <dd class="mt-2 flex flex-wrap gap-2">
+            {s.items.map((i) => (
+              <span class="rounded-md bg-slate-100 px-2 py-1 text-sm">{i}</span>
+            ))}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <section id="projects" class="scroll-mt-20 py-10">
+    <h2 class="text-2xl font-bold text-slate-900">프로젝트</h2>
+    <div class="mt-4 grid gap-4">
+      {projects.map((p) => (
+        <a href={`${base}projects/${p.id}/`} class="group block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-slate-400 hover:shadow-sm">
+          <div class="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+            <span>{p.data.period}</span>
+            <span>·</span>
+            <span>{p.data.team}</span>
+            {p.data.badge && <span class="rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700">{p.data.badge}</span>}
+          </div>
+          <h3 class="mt-2 text-lg font-semibold text-slate-900 group-hover:text-blue-700">{p.data.title}</h3>
+          <p class="mt-1 text-slate-600">{p.data.summary}</p>
+          <p class="mt-2 text-sm text-slate-700"><span class="font-medium">맡은 일:</span> {p.data.role}</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {p.data.tags.map((t) => <span class="rounded-md bg-slate-100 px-2 py-1 text-xs">{t}</span>)}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="contact" class="scroll-mt-20 py-10">
+    <h2 class="text-2xl font-bold text-slate-900">연락처</h2>
+    <ul class="mt-4 space-y-1 text-slate-700">
+      <li>GitHub: <a href={GITHUB_URL} class="text-blue-700 underline">{GITHUB_URL.replace('https://', '')}</a></li>
+      {EMAIL && <li>이메일: <a href={`mailto:${EMAIL}`} class="text-blue-700 underline">{EMAIL}</a></li>}
+    </ul>
+  </section>
+</Base>
