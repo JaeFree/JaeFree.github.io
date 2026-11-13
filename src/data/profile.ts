@@ -61,8 +61,8 @@ export const certifications = {
 // 1 사용만 해봤음 · 2 간단한 기능 구현 · 3 프로젝트에 활용 · 4 능숙하게 다룸 · 5 깊이 이해함
 type Skill = { name: string; level?: number };
 export const skills: { group: string; items: Skill[] }[] = [
-  { group: 'Languages', items: [{ name: 'Python' }, { name: 'C++ (Arduino)' }, { name: 'C#' }] },
-  { group: 'Game Dev', items: [{ name: 'Unity 6' }] },
+  { group: 'Languages', items: [{ name: 'Python' }, { name: 'C++ (Arduino · Unreal Engine)' }, { name: 'C#' }] },
+  { group: 'Game Dev', items: [{ name: 'Unity 6' }, { name: 'Unreal Engine' }] },
   {
     group: 'Vision · AI',
     items: [{ name: 'OpenCV' }, { name: 'MediaPipe' }, { name: 'YOLOv8' }, { name: 'face_recognition' }, { name: 'pyzbar' }],
