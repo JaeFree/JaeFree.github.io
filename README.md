@@ -10,6 +10,10 @@ npm run dev     # http://localhost:4321
 npm run build   # dist/ 에 정적 파일 생성
 ```
 
+## 내용 고치기
+
+자기소개, 자격증, 기술(레벨 1~5), 해본 게임, 연락처(GitHub·이메일·전화번호)는 모두 `src/data/profile.ts` 한 파일에서 고칩니다. 값을 비워 두면 해당 항목은 "준비 중"으로 보이거나 숨겨집니다. 증명사진은 `public/profile.jpg`를 바꾸면 됩니다.
+
 ## 프로젝트 추가하기
 
 `src/content/projects/` 에 Markdown 파일 하나를 만들고 위쪽 설정(제목, 기간, 팀, 맡은 일, 태그)을 채우면 목록과 상세 페이지가 자동으로 생깁니다. 기존 파일을 복사해서 고치면 가장 쉽습니다.
