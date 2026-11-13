@@ -19,8 +19,8 @@ export const profile = {
 // 연락처: 공개해도 되는 값만 넣으세요. 비워 두면 버튼이 나오지 않습니다.
 export const contact = {
   github: 'https://github.com/JaeFree',
-  email: '', // 예: 'me@example.com'
-  phone: '', // 예: '010-1234-5678'
+  email: 'rlawovy147@naver.com',
+  phone: '010-8842-3745',
 };
 
 export const about = {
@@ -62,6 +62,38 @@ export const skills: { group: string; items: Skill[] }[] = [
   { group: 'Data · Tools', items: [{ name: 'SQLite' }, { name: 'pytest' }, { name: 'Linux · systemd' }, { name: 'Git' }] },
 ];
 
-// 해본 게임 리스트
-// 예: { name: '리그 오브 레전드', genre: 'MOBA', period: '2018 ~ 현재', record: '최고 티어 다이아', note: '정글 주 포지션' }
-export const games = [] as { name: string; genre?: string; period?: string; record?: string; note?: string }[];
+// 많이 플레이한 주요 게임 (목록에서 밑줄로 강조됩니다. 이름은 아래 목록과 똑같이 적어야 합니다)
+export const mainGames = ['리그오브레전드', '메이플스토리', '배틀그라운드', '낙원', '피파온라인3', '오버워치 1', '오버워치2', '발로란트'];
+
+// 해본 게임 리스트: 플랫폼 → 장르 → 게임 이름
+// 장르 안의 게임은 화면에 가나다·ABC 순으로 자동 정렬됩니다.
+export const games: { platform: string; genres: { genre: string; items: string[] }[] }[] = [
+  {
+    platform: 'PC',
+    genres: [
+      { genre: 'MOBA · AOS', items: ['리그오브레전드', '이터널 리턴'] },
+      { genre: 'MMORPG · RPG', items: ['메이플스토리', '메이플스토리 M', '마비노기', '엘소드', '테일즈위버', '바람의나라', '로스트아크', '던전앤파이터', '파이널판타지14'] },
+      { genre: 'FPS · TPS', items: ['서든어택', '카운터스트라이크온라인', 'Counter-Strike 2', '발로란트', '오버워치 1', '오버워치2', '레인보우식스시즈', '더 파이널스', 'Apex 레전드', 'Black Squad', 'Borderlands2', 'Far Cry5', 'Left 4 Dead 2'] },
+      { genre: '배틀로얄 · 익스트랙션', items: ['배틀그라운드', 'H1Z1', 'Z1 Battle Royale', '낙원'] },
+      { genre: '액션 · 대전', items: ['사이퍼즈', 'Skul: The Hero Slayer', 'Knockout City 트라이얼', 'Angvik'] },
+      { genre: '생존 · 크래프팅', items: ['서브노티카', 'Project Zomboid', 'SCUM'] },
+      { genre: '호러', items: ['The Outlast Trials', 'Friday the 13th: The Game', 'Deceit', 'Emily Wants To Play', 'Escape the Backrooms', 'Lethal Company'] },
+      { genre: '파티 · 소셜 추리', items: ['Among Us', 'Goose Goose Duck', 'feign', 'LOCKDOWN Protocol'] },
+      { genre: '협동 · 물리 퍼즐', items: ['WE WERE HERE', 'Human Fall Flat', 'Hand Simulator', 'Hand Simulator:Survival'] },
+      { genre: '스포츠 · 레이싱', items: ['FC온라인', '피파온라인2', '피파온라인3', '마구마구', '카트라이더'] },
+      { genre: '캐주얼 · 보드', items: ['버블파이터', '모두의 마블', 'Prominence Poker'] },
+      { genre: '어드벤처 · 리듬 · 디펜스', items: ['데이브 더 다이버', '불과 얼음의 춤', 'Bloons TD Battles'] },
+      { genre: '샌드박스 · 메타버스', items: ['메이플스토리 월드', '로블록스', 'VRChat'] },
+    ],
+  },
+  {
+    platform: '모바일',
+    genres: [
+      { genre: 'RPG · 전략', items: ['세븐나이츠', 'WOS: 화이트 아웃 서바이벌', '클래시 오브 클랜', '클래시 로얄'] },
+      { genre: '러너 · 아케이드', items: ['쿠키런 오븐브레이크', 'Geometry Dash', '무한의 계단', 'Rider', '길건너 친구들'] },
+      { genre: '퍼즐 · 두뇌', items: ['블록 블라스트', '마법의 정렬', 'Screwdom', '스도쿠', '오목의 달인'] },
+      { genre: '스포츠 · 레이싱', items: ['컴투스 프로야구', '카트라이더 러쉬 플러스'] },
+      { genre: '보드 · 캐주얼', items: ['피망 뉴맞고', '세포 특공대', 'Pokemon Go'] },
+    ],
+  },
+];

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { profile, contact, about, certifications, skills, games } from '../data/profile';
+import { profile, contact, about, certifications, skills, games, mainGames } from '../data/profile';
 
 const projects = (await getCollection('projects')).sort(
   (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf(),
@@ -84,16 +84,31 @@ const contactCount = [contact.github, contact.email, contact.phone].filter(Boole
       <h2 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">해본 게임</h2>
 
       {games.length > 0 ? (
-        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {games.map((g) => (
-            <div class="card card-hover p-6">
-              <div class="flex items-start justify-between gap-3">
-                <h3 class="font-bold">{g.name}</h3>
-                {g.genre && <span class="tag shrink-0">{g.genre}</span>}
+        <div class="mt-12 space-y-14">
+          {games.map((pf) => (
+            <div>
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b-2 border-ink pb-3">
+                <h3 class="text-xl font-extrabold">{pf.platform}</h3>
+                <span class="text-sm font-bold text-accent" style="font-family:var(--font-mono)">
+                  {pf.genres.reduce((n, g) => n + g.items.length, 0)} GAMES
+                </span>
+                {pf.genres.some((g) => g.items.some((n) => mainGames.includes(n))) && (
+                  <span class="ml-auto text-sm text-muted"><span class="main-game">밑줄</span> = 많이 플레이한 주요 게임</span>
+                )}
               </div>
-              {g.period && <p class="mt-1 text-sm text-muted">{g.period}</p>}
-              {g.record && <p class="mt-4 text-[15px] font-semibold">{g.record}</p>}
-              {g.note && <p class="mt-1 text-sm leading-relaxed text-muted">{g.note}</p>}
+              <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {pf.genres.map((g) => (
+                  <div class="card p-5">
+                    <div class="flex items-center justify-between gap-3">
+                      <h4 class="flex items-center gap-2 font-bold"><span class="h-2 w-2 rounded-full bg-accent"></span>{g.genre}</h4>
+                      <span class="text-xs font-bold text-muted" style="font-family:var(--font-mono)">{g.items.length}</span>
+                    </div>
+                    <ul class="mt-4 flex flex-wrap gap-1.5">
+                      {[...g.items].sort((x, y) => x.localeCompare(y, 'ko')).map((name) => <li class={mainGames.includes(name) ? 'tag tag-main' : 'tag'}><span class={mainGames.includes(name) ? 'main-game' : ''}>{name}</span></li>)}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>

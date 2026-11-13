@@ -225,6 +225,19 @@ section[id] {
   background: rgb(255 106 31 / 0.08);
 }
 
+/* 해본 게임: 주요 게임 강조 */
+.main-game {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  font-weight: 700;
+}
+.tag-main {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
 /* 게임 HUD 요소 */
 .hud-corners {
   position: relative;
