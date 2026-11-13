@@ -90,7 +90,7 @@ export const games: { platform: string; genres: { genre: string; items: string[]
       { genre: 'MOBA · AOS', items: ['리그오브레전드', '이터널 리턴'] },
       { genre: 'MMORPG · RPG', items: ['메이플스토리', '메이플스토리 M', '마비노기', '엘소드', '테일즈위버', '바람의나라', '로스트아크', '던전앤파이터', '파이널판타지14'] },
       { genre: 'FPS · TPS', items: ['서든어택', '카운터스트라이크온라인', 'Counter-Strike 2', '발로란트', '오버워치 1', '오버워치2', '레인보우식스시즈', '더 파이널스', 'Apex 레전드', 'Black Squad', 'Borderlands2', 'Far Cry5', 'Left 4 Dead 2'] },
-      { genre: '배틀로얄 · 익스트랙션', items: ['배틀그라운드', 'H1Z1', 'Z1 Battle Royale', '낙원'] },
+      { genre: '배틀로얄 · 익스트랙션', items: ['배틀그라운드', 'H1Z1', 'Z1 Battle Royale', '낙원', 'Escape From Tarkov'] },
       { genre: '액션 · 대전', items: ['사이퍼즈', 'Skul: The Hero Slayer', 'Knockout City 트라이얼', 'Angvik'] },
       { genre: '생존 · 크래프팅', items: ['서브노티카', 'Project Zomboid', 'SCUM'] },
       { genre: '호러', items: ['The Outlast Trials', 'Friday the 13th: The Game', 'Deceit', 'Emily Wants To Play', 'Escape the Backrooms', 'Lethal Company'] },
