@@ -1,0 +1,61 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((p) => ({ params: { slug: p.id }, props: { project: p } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const d = project.data;
+const base = import.meta.env.BASE_URL;
+---
+<Base title={`${d.title} | 김재표`} description={d.summary}>
+  <section class="hero-bg text-white">
+    <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
+      <a href={`${base}#projects`} class="text-sm text-white/60 hover:text-white">← 프로젝트 목록</a>
+      {d.badge && <p class="eyebrow mt-6 normal-case tracking-normal">{d.badge}</p>}
+      <h1 class="mt-2 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">{d.title}</h1>
+      <p class="mt-4 text-lg leading-relaxed text-white/75">{d.summary}</p>
+    </div>
+  </section>
+
+  <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
+    <dl class="card grid gap-5 p-6 text-[15px] sm:grid-cols-2">
+      <div><dt class="text-sm text-muted">기간</dt><dd class="mt-1 font-semibold">{d.period}</dd></div>
+      <div><dt class="text-sm text-muted">팀</dt><dd class="mt-1 font-semibold">{d.team}</dd></div>
+      <div class="sm:col-span-2"><dt class="text-sm text-muted">맡은 일</dt><dd class="mt-1 font-semibold">{d.role}</dd></div>
+      <div class="sm:col-span-2">
+        <dt class="text-sm text-muted">기술</dt>
+        <dd class="mt-2 flex flex-wrap gap-2">{d.tags.map((t) => <span class="tag">{t}</span>)}</dd>
+      </div>
+    </dl>
+
+    <div class="prose-content mt-10">
+      <Content />
+    </div>
+
+    {(d.github || d.video) && (
+      <div class="mt-12 flex flex-wrap gap-2 border-t border-line pt-8">
+        {d.github && <a href={d.github} class="pill pill-dark">GitHub →</a>}
+        {d.video && <a href={d.video} class="pill pill-light">동작 영상 →</a>}
+      </div>
+    )}
+  </article>
+</Base>
+
+<style is:global>
+  .prose-content h2 { font-size: 1.25rem; font-weight: 700; color: #141413; margin-top: 2.5rem; border-left: 4px solid #ff6a1f; padding-left: 0.75rem; margin-bottom: 0.75rem; }
+  .prose-content p { line-height: 1.9; color: rgb(20 20 19 / 0.85); margin-top: 0.75rem; }
+  .prose-content ul, .prose-content ol { margin-top: 0.75rem; padding-left: 1.25rem; line-height: 1.75; }
+  .prose-content ul { list-style: disc; }
+  .prose-content ol { list-style: decimal; }
+  .prose-content code { background: #f3f2ef; padding: 0.1rem 0.3rem; border-radius: 0.25rem; font-size: 0.9em; }
+  .prose-content pre { background: #1a1918; color: #eceae5; padding: 1rem; border-radius: 0.75rem; overflow-x: auto; margin-top: 0.75rem; }
+  .prose-content pre code { background: none; padding: 0; }
+  .prose-content table { width: 100%; margin-top: 0.75rem; border-collapse: collapse; font-size: 0.9rem; }
+  .prose-content th { background: #f3f2ef; }
+  .prose-content th, .prose-content td { border: 1px solid #e6e4df; padding: 0.5rem; text-align: left; }
+</style>
