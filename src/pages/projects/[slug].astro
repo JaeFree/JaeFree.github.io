@@ -16,7 +16,7 @@ const base = import.meta.env.BASE_URL;
   <section class="hero-bg text-white">
     <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20">
       <a href={`${base}#projects`} class="text-sm text-white/60 hover:text-white">← 프로젝트 목록</a>
-      {d.badge && <p class="mt-6 text-sm font-semibold text-white/60">{d.badge}</p>}
+      {d.badge && <p class="eyebrow mt-6 normal-case tracking-normal">{d.badge}</p>}
       <h1 class="mt-2 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">{d.title}</h1>
       <p class="mt-4 text-lg leading-relaxed text-white/75">{d.summary}</p>
     </div>
@@ -47,7 +47,7 @@ const base = import.meta.env.BASE_URL;
 </Base>
 
 <style is:global>
-  .prose-content h2 { font-size: 1.25rem; font-weight: 700; color: #141413; margin-top: 2.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e6e4df; margin-bottom: 0.75rem; }
+  .prose-content h2 { font-size: 1.25rem; font-weight: 700; color: #141413; margin-top: 2.5rem; border-left: 4px solid #ff6a1f; padding-left: 0.75rem; margin-bottom: 0.75rem; }
   .prose-content p { line-height: 1.9; color: rgb(20 20 19 / 0.85); margin-top: 0.75rem; }
   .prose-content ul, .prose-content ol { margin-top: 0.75rem; padding-left: 1.25rem; line-height: 1.75; }
   .prose-content ul { list-style: disc; }

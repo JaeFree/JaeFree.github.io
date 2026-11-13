@@ -4,9 +4,15 @@
 
 export const profile = {
   name: '김재표',
-  title: 'CS Student',
-  roles: 'Game Server · Gameplay · IoT',
-  tagline: '보고, 판단하고, 직접 움직이게 만드는 개발자입니다.',
+  title: 'Game Programmer',
+  tagline: '때리고, 피하고, 쓰러뜨리는 순간의 손맛을 코드로 설계하는 게임 프로그래머를 목표로 합니다.',
+  // 첫 화면의 캐릭터 정보창(CLASS, SPEC 등). 자유롭게 바꾸세요.
+  hud: [
+    { label: 'CLASS', value: 'Game Programmer' },
+    { label: 'SPEC', value: 'Combat Design' },
+    { label: 'MAIN', value: 'C# · Unity 6' },
+    { label: 'NOW', value: '솔로 게임 「자동조준 서바이버」 제작 중' },
+  ],
   photo: 'profile.jpg', // public/ 폴더 안의 파일 이름
 };
 
@@ -21,7 +27,7 @@ export const about = {
   intro:
     '컴퓨터 비전(Python)과 임베디드(Arduino)를 연결해 실제로 동작하는 시스템을 만드는 것을 좋아합니다. ' +
     '팀 프로젝트에서는 주로 Arduino 제어 로직과 하드웨어 제작을 맡았고, MediaPipe 손 인식과 라즈베리파이 데이터 수집도 개발했습니다. ' +
-    '지금은 게임 서버와 게임플레이 개발을 목표로 C#과 Unity를 공부하고 있습니다.',
+    '하드웨어를 움직이며 익힌 "입력 → 판단 → 반응" 감각을 살려, 지금은 전투 시스템을 설계하는 게임 프로그래머를 목표로 C#과 Unity를 공부하고 있습니다.',
   // 나를 설명하는 키워드. 예: { title: '끈기', text: '원하는 결과가 나올 때까지 원인을 찾습니다.' }
   values: [] as { title: string; text: string }[],
 };
