@@ -3,7 +3,7 @@ title: 블루투스 기반 주거공간 환경 및 활동 감지 프로그램
 summary: 혼자 사는 사람의 집에서 환경과 활동을 카메라 없이 감지해 대시보드로 보여 주는 IoT 시스템
 period: 2025.11 ~ 2025.12
 startDate: 2025-11-01
-team: 3인 팀 (김재표, 나상훈, 김회준)
+team: 3인 팀 (김재표, 나상훈, 김회준 · 졸업작품 전시에는 천대광 함께 참여)
 role: Arduino 핵심 기술 개발, 라즈베리파이 데이터 파싱 개발
 tags: [Arduino Mega, Arduino Uno, Raspberry Pi, Python, Bluetooth, ThingsBoard]
 badge: 프로그램 저작권 등록 (2026.03.09)
