@@ -1,5 +1,5 @@
 ---
-title: ESCAPE from Space
+title: Escape From Space
 summary: 불시착한 행성의 "우주선 무덤"에서 물자를 챙기고, 보안 로봇을 피하거나 부수며, 산소가 떨어지기 전에 탈출하는 1인용 탑다운 SF 익스트랙션 슈터
 period: 2026.11 ~ 진행 중
 startDate: 2026-11-13
