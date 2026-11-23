@@ -7,6 +7,10 @@ team: 3인 팀 (김재표, 나상훈, 김회준)
 role: Arduino 핵심 기술 개발, 라즈베리파이 데이터 파싱 개발
 tags: [Arduino Mega, Arduino Uno, Raspberry Pi, Python, Bluetooth, ThingsBoard]
 badge: 프로그램 저작권 등록 (2026.03.09)
+media:
+  type: image
+  src: projects/home-sensing.jpg
+  alt: 졸업작품 전시회에서 시제품과 대시보드 앞에 선 팀원들
 ---
 
 ## 개요

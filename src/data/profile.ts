@@ -11,7 +11,7 @@ export const profile = {
     { label: 'CLASS', value: 'Client Programmer' },
     { label: 'SPEC', value: '전투 시스템 구현' },
     { label: 'MAIN', value: 'C# · Unity 6' },
-    { label: 'NOW', value: '솔로 게임 「자동조준 서바이버」 제작 중' },
+    { label: 'NOW', value: '솔로 게임 「Escape From Space」 제작 중' },
   ],
   photo: 'profile.jpg', // public/ 폴더 안의 파일 이름
 };
@@ -26,12 +26,16 @@ export const contact = {
 export const about = {
   intro:
     '게임을 즐기는 유저의 눈으로 보고, 만드는 개발자의 손으로 구현합니다. ' +
-    '리그오브레전드 연습생 경험과 80개가 넘는 게임을 플레이한 감각을 전투 시스템 구현에 담는 클라이언트 프로그래머를 목표로 합니다.',
+    '리그오브레전드 연습생 경험과 90개의 게임을 플레이한 감각을 전투 시스템 구현에 담는 클라이언트 프로그래머를 목표로 합니다.',
   // 나를 설명하는 키워드 (번호와 함께 표시됩니다)
   values: [
     {
       title: '협업',
       text: '지금까지의 프로젝트를 모두 팀으로 완성했습니다. 역할이 다른 팀원과 데이터 규격부터 맞추고, 각자 만든 부분이 하나의 시스템으로 돌아가게 하는 일을 맡아 왔습니다.',
+    },
+    {
+      title: 'AI와 함께 만들기',
+      text: 'MediaPipe, YOLOv8, face_recognition 같은 AI 모델을 여러 프로젝트에 직접 붙여 써 왔습니다. 인식은 AI 모델에 맡기고, 그 결과를 하드웨어 제어와 시스템 로직으로 연결하는 일을 맡았습니다. 개발할 때도 Claude Code 같은 AI 도구와 단계를 나눠 설계하고, 테스트로 결과를 확인합니다.',
     },
     {
       title: '유저의 시선',
@@ -88,17 +92,17 @@ export const games: { platform: string; genres: { genre: string; items: string[]
     platform: 'PC',
     genres: [
       { genre: 'MOBA · AOS', items: ['리그오브레전드', '이터널 리턴'] },
-      { genre: 'MMORPG · RPG', items: ['메이플스토리', '메이플스토리 M', '마비노기', '엘소드', '테일즈위버', '바람의나라', '로스트아크', '던전앤파이터', '파이널판타지14'] },
-      { genre: 'FPS · TPS', items: ['서든어택', '카운터스트라이크온라인', 'Counter-Strike 2', '발로란트', '오버워치 1', '오버워치2', '레인보우식스시즈', '더 파이널스', 'Apex 레전드', 'Black Squad', 'Borderlands2', 'Far Cry5', 'Left 4 Dead 2'] },
-      { genre: '배틀로얄 · 익스트랙션', items: ['배틀그라운드', 'H1Z1', 'Z1 Battle Royale', '낙원', 'Escape From Tarkov'] },
-      { genre: '액션 · 대전', items: ['사이퍼즈', 'Skul: The Hero Slayer', 'Knockout City 트라이얼', 'Angvik'] },
+      { genre: 'MMORPG · RPG', items: ['메이플스토리', '메이플스토리 M', '마비노기', '엘소드', '테일즈위버', '바람의나라', '로스트아크', '던전앤파이터', '파이널판타지14', '귀혼'] },
+      { genre: 'FPS · TPS', items: ['서든어택', '카운터스트라이크온라인', 'Counter-Strike 2', '발로란트', '오버워치 1', '오버워치2', '레인보우식스시즈', '더 파이널스', 'Apex 레전드', 'Black Squad', 'Borderlands2', 'Far Cry5', 'Left 4 Dead 2', '팀포트리스2'] },
+      { genre: '배틀로얄 · 익스트랙션', items: ['배틀그라운드', 'H1Z1', 'Z1 Battle Royale', '낙원', 'Escape From Tarkov', 'Escape from Duckov'] },
+      { genre: '액션 · 대전', items: ['사이퍼즈', 'Skul: The Hero Slayer', 'Knockout City 트라이얼', 'Angvik', '야채부락리'] },
       { genre: '생존 · 크래프팅', items: ['서브노티카', 'Project Zomboid', 'SCUM'] },
       { genre: '호러', items: ['The Outlast Trials', 'Friday the 13th: The Game', 'Deceit', 'Emily Wants To Play', 'Escape the Backrooms', 'Lethal Company'] },
       { genre: '파티 · 소셜 추리', items: ['Among Us', 'Goose Goose Duck', 'feign', 'LOCKDOWN Protocol'] },
       { genre: '협동 · 물리 퍼즐', items: ['WE WERE HERE', 'Human Fall Flat', 'Hand Simulator', 'Hand Simulator:Survival'] },
       { genre: '스포츠 · 레이싱', items: ['FC온라인', '피파온라인2', '피파온라인3', '마구마구', '카트라이더'] },
-      { genre: '캐주얼 · 보드', items: ['버블파이터', '모두의 마블', 'Prominence Poker'] },
-      { genre: '어드벤처 · 리듬 · 디펜스', items: ['데이브 더 다이버', '불과 얼음의 춤', 'Bloons TD Battles'] },
+      { genre: '캐주얼 · 보드', items: ['버블파이터', '모두의 마블', 'Prominence Poker', '캐치마인드', '윷놀이'] },
+      { genre: '어드벤처 · 리듬 · 디펜스', items: ['데이브 더 다이버', '불과 얼음의 춤', 'Bloons TD Battles', '러브비트'] },
       { genre: '샌드박스 · 메타버스', items: ['메이플스토리 월드', '로블록스', 'VRChat'] },
     ],
   },

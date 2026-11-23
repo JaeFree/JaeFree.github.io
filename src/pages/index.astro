@@ -171,7 +171,21 @@ const contactCount = [contact.github, contact.email, contact.phone].filter(Boole
 
       <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
-          <article class="card card-hover flex flex-col p-6">
+          <article class="card card-hover flex flex-col overflow-hidden">
+            {p.data.media && (
+              <a href={`${base}projects/${p.id}/`} class="relative block aspect-[16/10] overflow-hidden border-b border-line bg-paper-2">
+                <img
+                  src={`${base}${p.data.media.type === 'video' ? p.data.media.poster : p.data.media.src}`}
+                  alt={p.data.media.alt}
+                  loading="lazy"
+                  class="h-full w-full object-cover"
+                />
+                {p.data.media.type === 'video' && (
+                  <span class="absolute bottom-3 left-3 bg-ink/80 px-2 py-1 text-xs font-bold text-white" style="font-family:var(--font-mono)">▶ VIDEO</span>
+                )}
+              </a>
+            )}
+            <div class="flex flex-1 flex-col p-6">
             <div class="flex items-center justify-between text-sm text-muted">
               <span class="font-bold text-faint" style="font-family:var(--font-mono)">Q.{String(i + 1).padStart(2, '0')}</span>
               {p.data.period.includes('진행') ? <span class="status status-live">IN PROGRESS</span> : <span class="status">CLEAR</span>}
@@ -191,6 +205,7 @@ const contactCount = [contact.github, contact.email, contact.phone].filter(Boole
                 {p.data.github && <a href={p.data.github} class="pill pill-light">GitHub →</a>}
                 {p.data.video && <a href={p.data.video} class="pill pill-light">영상 →</a>}
               </div>
+            </div>
             </div>
           </article>
         ))}

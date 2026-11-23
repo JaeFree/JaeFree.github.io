@@ -7,6 +7,10 @@ team: 2인 팀 (김재표, 오성원)
 role: Arduino 핵심 기술 개발, 하드웨어 제작, MediaPipe Hand Landmarker 개발
 tags: [Python, MediaPipe, OpenCV, Raspberry Pi, Bluetooth, Arduino Uno]
 badge: 2026 창의융합 프로젝트
+media:
+  type: image
+  src: projects/hand-gesture-iot.jpg
+  alt: 손동작 IoT 제어 시스템 프로젝트 포스터
 ---
 
 ## 개요

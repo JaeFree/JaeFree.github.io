@@ -23,6 +23,25 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
+    {d.media && (
+      <figure class="mb-10">
+        {d.media.type === 'video' ? (
+          <video
+            src={`${base}${d.media.src}`}
+            poster={d.media.poster && `${base}${d.media.poster}`}
+            controls
+            muted
+            playsinline
+            preload="metadata"
+            class="mx-auto max-h-[70vh] w-auto max-w-full rounded-xl border border-line bg-night"
+          ></video>
+        ) : (
+          <img src={`${base}${d.media.src}`} alt={d.media.alt} class="mx-auto max-h-[70vh] w-auto max-w-full rounded-xl border border-line" />
+        )}
+        <figcaption class="mt-3 text-center text-sm text-muted">{d.media.alt}</figcaption>
+      </figure>
+    )}
+
     <dl class="card grid gap-5 p-6 text-[15px] sm:grid-cols-2">
       <div><dt class="text-sm text-muted">기간</dt><dd class="mt-1 font-semibold">{d.period}</dd></div>
       <div><dt class="text-sm text-muted">팀</dt><dd class="mt-1 font-semibold">{d.team}</dd></div>

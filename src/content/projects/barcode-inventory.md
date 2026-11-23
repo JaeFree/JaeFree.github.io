@@ -1,13 +1,18 @@
 ---
 title: 바코드 스캔 기반 재고 연동 시스템
 summary: 웹캠으로 읽은 바코드를 MQTT로 라즈베리파이에 모아 저장하고, 끊겨도 유실 없이 재고 대시보드까지 보내는 시스템
-period: 2026.10 ~ 진행 중
+period: "2026.10"
 startDate: 2026-10-11
 team: 팀 프로젝트 (재고 대시보드는 팀원 담당)
-role: 바코드 인식, MQTT 브로커·DB 저장, 대시보드 전송 등 라즈베리파이 쪽 시스템 전체 개발
+role: 바코드 인식, MQTT 브로커·DB 저장, 대시보드 전송 등 라즈베리파이 쪽 시스템 개발
 tags: [Python, OpenCV, pyzbar, MQTT (Mosquitto), SQLite, Raspberry Pi, pytest, systemd]
-badge: 4학년 2학기 전공 프로젝트 · 진행 중
+badge: 4학년 2학기 전공 프로젝트
 github: https://github.com/JaeFree/major-project-4-2
+media:
+  type: video
+  src: projects/barcode-inventory.mp4
+  poster: projects/barcode-inventory.jpg
+  alt: 웹캠에 바코드를 비추면 재고 대시보드에 반영되는 시연 영상
 ---
 
 ## 개요
@@ -20,14 +25,14 @@ PC에 연결한 웹캠이 상품 바코드를 읽으면, 스캔 기록이 MQTT�
 웹캠 → PC 스캐너 (OpenCV + pyzbar 인식, 디스크 outbox)
      → MQTT QoS 1 → Raspberry Pi 4 (Mosquitto 브로커)
      → db-writer (SQLite 저장) → forwarder → 재고 대시보드 API
-                               └→ uno-bridge → Arduino UNO (LCD · LED · 부저)
+                               └→ uno-bridge → Arduino UNO (LCD · LED · 부저, 실물 연결 전)
 ```
 
 ## 내가 맡은 일
 
 - 바코드 인식 → MQTT 발행 → DB 저장 → 대시보드 전송까지 4단계를 단계별로 설계, 구현, 테스트
 - Mosquitto 브로커 설정 (사용자 인증, 토픽 ACL, 연결 끊김 알림)과 라즈베리파이 실제 배치
-- Arduino UNO 표시 장치 펌웨어와 USB 시리얼 브리지 (저장·거부·스캐너 끊김을 LCD, LED, 부저로 알림)
+- Arduino UNO 표시 장치 펌웨어와 USB 시리얼 브리지 개발 (저장·거부·스캐너 끊김을 LCD, LED, 부저로 알림, 실물 연결은 하지 않음)
 
 ## 기술적 고민과 해결
 
@@ -35,7 +40,7 @@ PC에 연결한 웹캠이 상품 바코드를 읽으면, 스캔 기록이 MQTT�
 - **중복 방지가 없는 외부 API:** 대시보드 서버는 같은 요청을 두 번 받으면 재고를 두 번 올립니다. 보낸 기록을 따로 관리하고, 응답을 못 받았을 때는 서버의 이력을 먼저 조회해 이미 반영됐는지 확인한 뒤에만 다시 보냅니다.
 - **실제 API 접속 실패:** Cloudflare가 Python 기본 User-Agent를 막아 요청이 거부됐습니다. 전용 User-Agent를 지정해 해결했습니다.
 - **같은 바코드 반복 기록:** 바코드를 계속 비추면 몇 초마다 다시 기록됐습니다. 바코드가 화면에서 사라졌다가 다시 나타날 때만 기록하는 `presence` 모드로 바꿨습니다.
-- **잘못 읽음:** 흐릿할 때 CODE128을 EAN8/EAN13으로 잘못 읽는 경우를 실물 시험에서 찾았고, 읽을 바코드 종류를 제한하는 수정을 다음 단계로 잡아 두었습니다.
+- **잘못 읽음:** 흐릿할 때 CODE128을 EAN8/EAN13으로 잘못 읽는 경우를 실물 시험에서 찾았습니다. 대시보드에는 CODE128만 보내도록 해 재고에는 영향이 없게 막았습니다.
 
 ## 결과
 
@@ -44,8 +49,8 @@ PC에 연결한 웹캠이 상품 바코드를 읽으면, 스캔 기록이 MQTT�
 - 끊김 시험: DB 저장 서비스를 끄거나 PC Wi-Fi를 끊은 동안 찍은 스캔이 복구 후 모두 저장되고, 대시보드 재고도 중복 없이 반영됨
 - 재부팅 후 브로커, DB 저장, 대시보드 전송 서비스 자동 실행 확인
 
-## 다음 단계
+## 아쉬운 점
 
-- 읽을 바코드 종류 제한으로 잘못 읽음 줄이기
-- 입고·출고 같은 업무 규칙과 물품 관리 웹 페이지
-- Arduino UNO 표시 장치 실물 연결
+- 잘못 읽은 기록이 파이 DB에는 남습니다. 스캐너에서 읽을 바코드 종류를 제한하면 근본적으로 줄일 수 있습니다.
+- 입고·출고 같은 업무 규칙과 물품 관리 웹 페이지는 범위에 넣지 못했습니다.
+- Arduino UNO 표시 장치는 펌웨어와 테스트까지 만들고 실물 연결은 하지 못했습니다.

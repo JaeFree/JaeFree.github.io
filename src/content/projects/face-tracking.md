@@ -6,6 +6,10 @@ startDate: 2026-04-29
 team: 2인 팀 (김재표, 오성원)
 role: Arduino 핵심 기술 개발, 하드웨어 제작
 tags: [Python, YOLOv8, face_recognition, OpenCV, Arduino Uno, USB 시리얼]
+media:
+  type: image
+  src: projects/face-tracking.jpg
+  alt: 웹캠이 얼굴을 인식하고 서보로 만든 2축 조준 장치가 따라 움직이는 모습
 ---
 
 ## 개요
@@ -24,7 +28,7 @@ PC가 웹캠 영상에서 YOLOv8로 사람을 찾고, face_recognition으로 등
 
 ## 내가 맡은 일
 
-- Arduino 제어 로직 전체: 시리얼 명령 파싱, 상대 각도 제어, 수동/자동 모드 전환
+- Arduino 제어 로직 개발: 시리얼 명령 파싱, 상대 각도 제어, 수동/자동 모드 전환
 - 서보 3개와 조이스틱을 연결한 하드웨어 제작
 
 ## 기술적 고민과 해결
