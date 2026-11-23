@@ -8,6 +8,11 @@ role: 기획서 작성과 방향 결정, AI와 협업한 구현·테스트·밸�
 tags: [Unity 6, C#, 2D URP, ScriptableObject, A* 길찾기, 상태 머신, Claude Code]
 badge: 개인 게임 프로젝트
 github: https://github.com/JaeFree/EscapeFromSpace
+media:
+  type: video
+  src: projects/escape-from-space.mp4
+  poster: projects/escape-from-space.jpg
+  alt: 대기실에서 장비를 챙겨 출격하고, 레이드에서 로봇을 피해 파밍한 뒤 탈출하는 플레이 영상
 ---
 
 ## 개요
@@ -46,7 +51,3 @@ github: https://github.com/JaeFree/EscapeFromSpace
 ## 개발 방식
 
 Claude Code(AI)와 협업해 만들고 있습니다. 기획서(GDD)의 방향과 결정은 제가 정하고, 구현·테스트·문서화는 AI와 함께 진행합니다. 기획서에 없는 기능은 넣지 않고, 단계마다 컴파일, 플레이 모드 테스트, 화면 캡처로 확인합니다. 자세한 전투 규칙은 저장소의 `docs/COMBAT.md`에 정리했습니다.
-
-## 다음 단계
-
-- 플레이 영상 촬영과 첨부
